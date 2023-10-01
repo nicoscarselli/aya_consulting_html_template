@@ -28,7 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const preloader = document.querySelector('#preloader');
   if (preloader) {
     window.addEventListener('load', () => {
-      preloader.remove();
+      setTimeout(() => {
+        preloader.classList.add('loaded');
+      }, 1000);
+      setTimeout(() => {
+        preloader.remove();
+      }, 2000);
     });
   }
 
@@ -132,11 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /**
-   * Initiate Pure Counter
-   */
-  new PureCounter();
-
-  /**
    * Init swiper sliders
    */
   function initSwiper() {
@@ -150,14 +150,16 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Animation on scroll function and init
    */
-  function aosInit() {
+  function aos_init() {
     AOS.init({
-      duration: 600,
+      duration: 1000,
       easing: 'ease-in-out',
       once: true,
       mirror: false
     });
   }
-  window.addEventListener('load', aosInit);
+  window.addEventListener('load', () => {
+    aos_init();
+  });
 
 });
